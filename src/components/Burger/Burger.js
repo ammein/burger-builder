@@ -6,7 +6,7 @@ import BurgerIngredients from './BurgerIngredients/BurgerIngredients';
 const burger = (props) => {
 
     // Transform object/dictionary to an array for .map()
-    const transformedIngredients = Object.keys(props.ingredients)
+    let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
             // Array() that creates an empty array
             // If you use [...Array(2)] will create two undefined array [undefined , undefined]
@@ -22,7 +22,9 @@ const burger = (props) => {
             return arr.concat(el);
         } , [] /* This is initialValue **/);
 
-        console.log(transformedIngredients)
+    if(transformedIngredients.length === 0){
+        transformedIngredients = <p>Please Start Adding Ingredients !</p>;
+    }
 
     return(
         <div className={classes.Burger}>
